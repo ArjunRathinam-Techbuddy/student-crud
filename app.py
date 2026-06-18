@@ -136,7 +136,20 @@ def view_student(student_id):
     return render_template("view.html", student=student)
 
 
-init_db()
+try:
+    init_db()
+    print(f"DB initialized successfully at {DB_PATH}", flush=True)
+except Exception as e:
+    print(f"DB INIT FAILED: {e}", flush=True)
+
+
+@app.errorhandler(500)
+def handle_500(e):
+    import traceback
+    tb = traceback.format_exc()
+    print(tb, flush=True)
+    return f"<pre>{tb}</pre>", 500
+
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)
