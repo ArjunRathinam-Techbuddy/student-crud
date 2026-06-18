@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}{{ student.name }} - Details{% endblock %}
+{% block content %}
+<div class="card">
+    <h2 style="margin-bottom: 16px;">Student Details</h2>
+    <div class="detail-row">
+        <div class="detail-label">Roll Number</div>
+        <div class="detail-value">{{ student.roll_number }}</div>
+    </div>
+    <div class="detail-row">
+        <div class="detail-label">Name</div>
+        <div class="detail-value">{{ student.name }}</div>
+    </div>
+    <div class="detail-row">
+        <div class="detail-label">Email</div>
+        <div class="detail-value">{{ student.email }}</div>
+    </div>
+    <div class="detail-row">
+        <div class="detail-label">Department</div>
+        <div class="detail-value">{{ student.department }}</div>
+    </div>
+    <div class="detail-row">
+        <div class="detail-label">Year</div>
+        <div class="detail-value">Year {{ student.year }}</div>
+    </div>
+    <div class="form-actions">
+        <a class="btn-secondary" href="{{ url_for('index') }}">← Back to List</a>
+        <a class="btn-primary" style="text-decoration:none; display:flex; align-items:center;" href="{{ url_for('edit_student', student_id=student.id) }}">Edit</a>
+    </div>
+</div>
+{% endblock %}
